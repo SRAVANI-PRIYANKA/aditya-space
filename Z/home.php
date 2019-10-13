@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +34,7 @@ session_start();
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="	fab fa-studiovinari"></i>
+          <i class="  fab fa-studiovinari"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Aditya Space<sup>3</sup></div>
       </a>

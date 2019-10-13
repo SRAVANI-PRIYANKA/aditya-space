@@ -1,5 +1,5 @@
 <?php
- include 'connect.php';
+include 'connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -241,30 +241,28 @@
                   </tfoot>
                        <tbody>
                   <?php
-                  $sql = "SELECT * FROM `workshops` WHERE eid = '{$_SESSION["eid"]}' ";
+$sql = "SELECT * FROM `workshops` WHERE eid = '{$_SESSION["eid"]}' ";
 $result = $conn->query($sql);
-
 if ($result->num_rows > 0) {
- while($row = $result->fetch_assoc()) {
-                    echo'<tr>
+    while ($row = $result->fetch_assoc()) {
+        echo '<tr>
                     
-                      <td>'. $row["event_attended"].'</td>
-                      <td>'. $row["institute_organized"].'</td>
-                      <td>'. $row["event_place"].'</td>
-                      <td>'.$row["from_date"] .' to '.$row["to_date"].' </td>
-                      <td>'.$row["total_days"].'</td>
-                      <td>  <a class="btn btn-primary btn-sm" href="/
-               '.$row["certificate"].'">
+                      <td>' . $row["event_attended"] . '</td>
+                      <td>' . $row["institute_organized"] . '</td>
+                      <td>' . $row["event_place"] . '</td>
+                      <td>' . $row["from_date"] . ' to ' . $row["to_date"] . ' </td>
+                      <td>' . $row["total_days"] . '</td>
+                      <td>  <a class="btn btn-primary btn-sm" href="/cs/z/
+               ' . $row["certificate"] . '">
                <i class="material-icons">open_in_browser</i>
                 </a></td>
                  <td>  <a class="btn btn-danger btn-sm" href="/cs/z/delete.php?k=
-               '.$row["wid"].'">
+               ' . $row["wid"] . '">
               <i class="material-icons">delete</i>
                 </a></td>
                     </tr>';
-                  }}
-      
-else {
+    }
+} else {
     echo "0 results";
 }
 $conn->close();

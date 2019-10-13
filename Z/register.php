@@ -1,35 +1,29 @@
-<?php include 'connect.php';?>
+<?php include 'connect.php'; ?>
 
 <?php
-  
-if(! empty( $_POST ) )
-{
-$eid=$_POST['eid'];
-$name=$_POST['name'];
-$profession=$_POST['profession'];
-$email=$_POST['email'];
-$password=$_POST['password'];
-$department=$_POST['department'];
-$college=$_POST['college'];
-$sql = "INSERT INTO faculty 
+if (!empty($_POST)) {
+    $eid = $_POST['eid'];
+    $name = $_POST['name'];
+    $profession = $_POST['profession'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $department = $_POST['department'];
+    $college = $_POST['college'];
+    $sql = "INSERT INTO faculty 
 VALUES ('{$eid}','{$name}', '{$profession}', '{$email}','{$password}','{$department}','{$college}')";
-echo $sql;
-if (mysqli_query($conn, $sql)) {
-    echo "New Account Created successfully";
- 
-    $_SESSION["name"] = $name;
-    $_SESSION["eid"] = $eid;
-    $_SESSION["email"] = $email;
-if(isset($_SESSION["name"])) {
-header("Location: /cs/z/home.php");
-}
-  
-
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
-
-mysqli_close($conn);
+    echo $sql;
+    if (mysqli_query($conn, $sql)) {
+        echo "New Account Created successfully";
+        $_SESSION["name"] = $name;
+        $_SESSION["eid"] = $eid;
+        $_SESSION["email"] = $email;
+        if (isset($_SESSION["name"])) {
+            header("Location: /cs/z/home.php");
+        }
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    mysqli_close($conn);
 }
 ?>
 <!DOCTYPE html>

@@ -1,32 +1,26 @@
-<?php include 'connect.php';?>
+<?php include 'connect.php'; ?>
 
 <?php
-if(! empty( $_POST ) )
-{
-$email=$_POST['email'];
-$password=$_POST['password'];
-$sql = "SELECT * FROM  faculty 
+if (!empty($_POST)) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $sql = "SELECT * FROM  faculty 
 WHERE  email='{$email}' and password ='{$password}'";
-
-if ($res = mysqli_query($conn, $sql)) {
-   $row  = mysqli_fetch_array($res);
-   echo $sql;
-if(is_array($row)) {
-   echo 'hai';
-    $_SESSION["name"] = $row['name'];
-    $_SESSION["email"] = $row['email'];
-    $_SESSION["eid"] = $row['eid'];
-    header("Location: /cs/z/home.php");
-    
-}else {
-$message = "Invalid Username or Password!";
+    if ($res = mysqli_query($conn, $sql)) {
+        $row = mysqli_fetch_array($res);
+        echo $sql;
+        if (is_array($row)) {
+            echo 'hai';
+            $_SESSION["name"] = $row['name'];
+            $_SESSION["email"] = $row['email'];
+            $_SESSION["eid"] = $row['eid'];
+            header("Location: /cs/z/home.php");
+        } else {
+            $message = "Invalid Username or Password!";
+        }
+        mysqli_close($conn);
+    }
 }
-
-mysqli_close($conn);
-}
-}
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

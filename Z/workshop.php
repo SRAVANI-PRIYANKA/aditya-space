@@ -1,60 +1,47 @@
-<?php include 'connect.php';?>
+<?php include 'connect.php'; ?>
 <?php
-   if(! empty( $_POST ) )
-   {
-   
-    if (($_FILES['certificate']['name']!="")){
-       $uploaddir = 'upload/';
-    $uploadfile = $uploaddir . basename($_FILES['certificate']['name']);
-    if (move_uploaded_file($_FILES['certificate']['tmp_name'], $uploadfile)) {
-   $faculty_name=$_POST['faculty_name'];
-   $eid=$_POST['eid'];
-   $academic_year=$_POST['academic_year'];
-   $event_attended=$_POST['event_attended'];
-   $institute_organized=$_POST['institute_organized'];
-   $event_place=$_POST['event_place'];
-   $from_date=$_POST['from_date'];
-   $to_date=$_POST['to_date'];
-   $total_days=$_POST['total_days'];
-   $remarks=$_POST['remarks'];
-   $sql = "INSERT INTO workshops 
+if (!empty($_POST)) {
+    if (($_FILES['certificate']['name'] != "")) {
+        $uploaddir = 'upload/';
+        $uploadfile = $uploaddir . basename($_FILES['certificate']['name']);
+        if (move_uploaded_file($_FILES['certificate']['tmp_name'], $uploadfile)) {
+            $faculty_name = $_POST['faculty_name'];
+            $eid = $_POST['eid'];
+            $academic_year = $_POST['academic_year'];
+            $event_attended = $_POST['event_attended'];
+            $institute_organized = $_POST['institute_organized'];
+            $event_place = $_POST['event_place'];
+            $from_date = $_POST['from_date'];
+            $to_date = $_POST['to_date'];
+            $total_days = $_POST['total_days'];
+            $remarks = $_POST['remarks'];
+            $sql = "INSERT INTO workshops 
    VALUES ('','{$faculty_name}','{$eid}','{$academic_year}', '{$event_attended}', '{$institute_organized}','{$event_place}','{$from_date}','{$to_date}','{$total_days}','{$uploadfile}','{$remarks}')";
-   if (mysqli_query($conn, $sql)) {
-       echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+            if (mysqli_query($conn, $sql)) {
+                echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
   <strong>hurray !</strong> Workshop Successfully added
   <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
     <span aria-hidden='true'>&times;</span>
   </button>
-</div>";  
-   } else {
-       echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-  <strong>Error</strong>".mysqli_error($conn)."<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+</div>";
+            } else {
+                echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+  <strong>Error</strong>" . mysqli_error($conn) . "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
     <span aria-hidden='true'>&times;</span>
   </button>
 </div>";
-   }
-    }
-   else { 
-        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+            }
+        } else {
+            echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
   <strong>Error</strong>While Uploading<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
     <span aria-hidden='true'>&times;</span>
   </button>
 </div>";
-   }
-   
-     mysqli_close($conn);
-   
+        }
+        mysqli_close($conn);
     }
-   }
-   
-   
-   
-   
-   
-   
- 
- 
-   ?>
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
