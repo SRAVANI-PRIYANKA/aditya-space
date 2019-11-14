@@ -252,11 +252,10 @@ if ($result->num_rows > 0) {
                       <td>' . $row["event_place"] . '</td>
                       <td>' . $row["from_date"] . ' to ' . $row["to_date"] . ' </td>
                       <td>' . $row["total_days"] . '</td>
-                      <td>  <a class="btn btn-primary btn-sm" href="/cs/z/
-               ' . $row["certificate"] . '">
+                      <td>  <a class="btn btn-primary btn-sm" href="/cs/z/'.$row["certificate"].'">
                <i class="material-icons">open_in_browser</i>
                 </a></td>
-                 <td>  <a class="btn btn-danger btn-sm" href="/cs/z/delete.php?k=
+                 <td>  <a class="btn btn-danger btn-sm" href="/cs/z/delete_workshop.php?k=
                ' . $row["wid"] . '">
               <i class="material-icons">delete</i>
                 </a></td>

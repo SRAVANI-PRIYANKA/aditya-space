@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -215,7 +215,18 @@ session_start();
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Faculty</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">21</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php 
+                            $query = "SELECT COUNT(*) as c FROM faculty"; 
+                            $result=mysqli_query($conn,$query);
+if($result)
+{
+ while($row=mysqli_fetch_assoc($result))
+  {
+        echo $row['c'];
+  }     
+
+}
+                      ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
